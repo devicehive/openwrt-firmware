@@ -1,0 +1,32 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2014 DataArt
+
+START=65
+
+EXTRA_COMMANDS="status"
+EXTRA_HELP="
+        status  Check the gateway's alive status"
+
+PROG=/usr/bin/alljoyn-daemon
+PID_F=/tmp/alljoyn-daemon.pid
+
+start()
+{
+	# start daemon
+	start-stop-daemon -q -S -p ${PID_F} -m -a ${PROG} &
+}
+ 
+stop()
+{
+	# stop daemon
+	start-stop-daemon -q -K -p ${PID_F}
+
+	# cleanup pid file
+	rm -f ${PID_F}
+}
+ 
+# alive status: 0 - alive, 1 - dead
+status()
+{
+	[ -f ${PID_F} ] && { ps -p `cat ${PID_F}` > /dev/null 2>&1; }
+}

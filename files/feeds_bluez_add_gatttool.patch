@@ -1,0 +1,12 @@
+diff --git a/utils/bluez/Makefile b/utils/bluez/Makefile
+index 72dcaea..5c32b31 100644
+--- a/utils/bluez/Makefile
++++ b/utils/bluez/Makefile
+@@ -90,6 +90,7 @@ endef
+ define Package/bluez-utils/install
+ 	$(INSTALL_DIR) $(1)/usr/bin
+ 	$(CP) $(PKG_INSTALL_DIR)/usr/bin/* $(1)/usr/bin/
++	$(CP) $(PKG_BUILD_DIR)/attrib/gatttool $(1)/usr/bin/
+ 	$(INSTALL_DIR) $(1)/etc/config
+ 	$(INSTALL_DATA) ./files/bluetooth.config $(1)/etc/config/bluetooth
+ 	$(INSTALL_DIR) $(1)/etc/dbus-1/system.d/
