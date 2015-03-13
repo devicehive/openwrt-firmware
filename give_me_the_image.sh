@@ -26,8 +26,9 @@ else
 	cd trunk
 	# adding alljoyn repo
 	echo "src-git alljoyn https://git.allseenalliance.org/gerrit/core/openwrt_feed;attitude_adjustment" >> feeds.conf.default
-	# adding dabin package
-	cp -r $DIR/files/dabin ./package/
+	# adding DA package
+	cp -r $DIR/files/blegw ./package/
+	cp -r $DIR/files/bluepy-helper ./package/
 	# donwnloading all packages
 	./scripts/feeds update -a
 	./scripts/feeds install -a
