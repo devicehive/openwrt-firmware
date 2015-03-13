@@ -10,7 +10,7 @@ define Package/alljoynblegw
   SECTION:=base
   CATEGORY:=Network
   TITLE:=DeviceHive AllJoyn BLE gateway
-  DEPENDS:=+bluez-libs +libstdcpp +alljoyn +alljoyn-about +alljoyn-controlpanel +alljoyn-notification
+  DEPENDS:=+bluez-libs +libstdcpp +bluepy-helper +alljoyn +alljoyn-about +alljoyn-controlpanel +alljoyn-notification
 endef
 
 define Package/alljoynblegw/description

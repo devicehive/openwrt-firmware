@@ -1,9 +1,8 @@
 #!/bin/sh /etc/rc.common
 # Copyright (C) 2014 DataArt
 
-ALLJOYN_ID=com.devicehive.demo.start
-DH_SERVER=http://alljoyn.pgcloud.devicehive.com/DeviceHive/rest
-GATEWAY_ID=gateway_1
+DH_SERVER="http://52.1.3.193/dh/rest"
+GATEWAY_ID="openwrt-alljoynblegw"
 
 START=98
 
@@ -17,7 +16,7 @@ PID_F=/tmp/alljoynblegw.pid
 start()
 {
 	# start daemon
-	start-stop-daemon -q -S -p ${PID_F} -m -a ${PROG} -- --service ${ALLJOYN_ID} --server ${DH_SERVER} --gatewayId ${GATEWAY_ID} &
+	start-stop-daemon -q -S -p ${PID_F} -m -a ${PROG} -- --server ${DH_SERVER} --gatewayId ${GATEWAY_ID} --helper /usr/bin/bluepy-helper &
 }
 
 
