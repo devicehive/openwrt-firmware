@@ -11,9 +11,6 @@ set -e
 # dir with this script
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# installing all tools
-sudo apt-get install build-essential flex gawk git-core libncurses5-dev libssl-dev mkisofs subversion quilt zlib1g-dev -y -qq --no-upgrade
-
 # downloading source
 cd $DIR
 if [ -e "trunk/DA.MARK" ]; then
@@ -27,6 +24,8 @@ else
 	# adding alljoyn repo
 	echo "src-git alljoyn https://git.allseenalliance.org/gerrit/core/openwrt_feed;attitude_adjustment" >> feeds.conf.default
 	# adding DA package
+	cp -r $DIR/files/alljoynblegw ./package/
+	cp -r $DIR/files/alljoyngw ./package/
 	cp -r $DIR/files/blegw ./package/
 	cp -r $DIR/files/bluepy-helper ./package/
 	# donwnloading all packages
